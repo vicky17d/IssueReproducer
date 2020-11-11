@@ -6,9 +6,11 @@
     <!-- Product and plugin compatibility requirements -->
     <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.plugins.terminal</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.vicky17d.issuereproducer.services.MyApplicationService"/>
+        <applicationService serviceImplementation="com.github.vicky17d.issuereproducer.classloaderissue.MyService" preload="true"/>
         <projectService serviceImplementation="com.github.vicky17d.issuereproducer.services.MyProjectService"/>
     </extensions>
 
@@ -16,4 +18,8 @@
         <listener class="com.github.vicky17d.issuereproducer.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+
+    <actions>
+
+    </actions>
 </idea-plugin>
