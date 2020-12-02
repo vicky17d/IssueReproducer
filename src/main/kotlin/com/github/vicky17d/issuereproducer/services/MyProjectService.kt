@@ -1,7 +1,7 @@
 package com.github.vicky17d.issuereproducer.services
 
-import com.intellij.openapi.project.Project
 import com.github.vicky17d.issuereproducer.MyBundle
+import com.intellij.openapi.project.Project
 
 class MyProjectService(project: Project) {
 
