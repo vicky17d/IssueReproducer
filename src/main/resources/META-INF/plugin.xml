@@ -1,19 +1,38 @@
 <idea-plugin>
-    <id>com.github.vicky17d.issuereproducer</id>
-    <name>IssueReproducer</name>
-    <vendor>vicky17d</vendor>
+  <id>com.github.vicky17d.issuereproducer</id>
+  <name>IssueReproducer</name>
+  <vendor>vicky17d</vendor>
 
-    <!-- Product and plugin compatibility requirements -->
-    <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
-    <depends>com.intellij.modules.platform</depends>
+  <!-- Product and plugin compatibility requirements -->
+  <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
+  <depends>com.intellij.modules.platform</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.vicky17d.issuereproducer.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.vicky17d.issuereproducer.services.MyProjectService"/>
-    </extensions>
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceImplementation="com.github.vicky17d.issuereproducer.services.MyApplicationService"/>
+    <projectService serviceImplementation="com.github.vicky17d.issuereproducer.services.MyProjectService"/>
+  </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.vicky17d.issuereproducer.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+  <applicationListeners>
+    <listener class="com.github.vicky17d.issuereproducer.listeners.MyProjectManagerListener"
+              topic="com.intellij.openapi.project.ProjectManagerListener"/>
+  </applicationListeners>
+
+  <actions>
+
+    <group id="welcomescreen.action.group" popup="false">
+      <add-to-group group-id="WelcomeScreen.QuickStart" anchor="first"/>
+    </group>
+
+
+    <action
+        class="com.github.vicky17d.issuereproducer.welcomescreenactions.FooAction"
+        id="welcomescreen.action.foo" text="Foo" description="Foo description">
+      <add-to-group group-id="welcomescreen.action.group" anchor="first"/>
+    </action>
+    <action
+        class="com.github.vicky17d.issuereproducer.welcomescreenactions.BarAction"
+        id="welcomescreen.action.bar" text="Bar" description="Bar description">
+      <add-to-group group-id="welcomescreen.action.group" anchor="after" relative-to-action="welcomescreen.action.foo"/>
+    </action>
+  </actions>
 </idea-plugin>
